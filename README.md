@@ -1,6 +1,6 @@
 # Frontend - React
 
-Este es el frontend del proyecto, desarrollado en React. A continuación se detallan los pasos para descargar, instalar y poner en marcha el frontend.
+Este es el frontend del proyecto, desarrollado en React. A continuación se detallan los pasos para descargar, instalar y poner en marcha.
 
 ## Requisitos previos
 
