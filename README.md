@@ -1,51 +1,55 @@
-# React + TypeScript + Vite
+# Frontend - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend del proyecto, desarrollado en React. A continuación se detallan los pasos para descargar, instalar y poner en marcha el frontend.
 
-Currently, two official plugins are available:
+## Requisitos previos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Node.js v18.20.5](https://nodejs.org/en/) (se recomienda esta versión).
 
-## Expanding the ESLint configuration
+## Pasos para ejecutar el Frontend
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Clonar el repositorio:**
+   Ejecuta el siguiente comando para clonar el repositorio desde GitHub:
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/Rand-om/react_redux_app.git
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. **Crear archivo `.env`:**
+   Crea un archivo llamado `.env` en la raíz del proyecto y agrega la siguiente variable de entorno:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```
+   VITE_API_URL=http://localhost:3000
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   Esta variable establece la URL de la API, que apunta al backend que se está ejecutando en el puerto `3000`. Asegúrate de que el backend esté corriendo en ese puerto.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# react_redux_app
+3. **Instalar dependencias:**
+   Una vez que hayas clonado el repositorio, navega al directorio del proyecto:
+
+   ```bash
+   cd react_redux_app
+   ```
+
+   Luego instala las dependencias necesarias utilizando `npm`:
+
+   ```bash
+   npm install
+   ```
+
+4. **Iniciar el servidor de desarrollo:**
+   Para iniciar el servidor de desarrollo y levantar el proyecto, ejecuta:
+
+   ```bash
+   npm run dev
+   ```
+
+   El proyecto debería estar corriendo en el puerto especificado en la configuración de Vite (por defecto, `localhost:5173`).
+
+5. **Verificar el funcionamiento:**
+   Abre tu navegador y visita `http://localhost:5173` (o el puerto configurado por Vite) para verificar que el frontend está funcionando correctamente.
+
+## Notas
+
+- Si encuentras algún error relacionado con la versión de Node.js, asegúrate de que estás utilizando la versión recomendada (v18.20.5).
+- Asegúrate de que el backend esté en funcionamiento en `http://localhost:3000` o en la URL correspondiente.

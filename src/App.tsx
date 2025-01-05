@@ -1,33 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
+
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from './redux/store';
+import { fetchPosts } from './redux/slices/postSlice';
+
 import './App.css'
 
+import { SearchForm } from './components/searchForm';
+import { PostsTable } from './components/postsTable';
+import { AddPostForm } from './components/addPostsForm';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch<AppDispatch>();
+  const { status } = useSelector((state: RootState) => state.posts);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchPosts());
+    }
+  }, [status, dispatch]);
+
+  if (status === 'loading') {
+    return <p>Loading posts...</p>;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SearchForm/>
+      <PostsTable/>
+      <AddPostForm/>
     </>
   )
 }
